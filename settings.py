@@ -1,0 +1,7 @@
+RES = WIDTH, HEIGHT = 1280, 720
+FPS = 60
+
+TITLE_FONT_SIZE = 50
+TEXT_FONT_SIZE = 35
+TEXT_COLOUR = 'black'
+FONT = 'fonts/SuperBoys.ttf'
