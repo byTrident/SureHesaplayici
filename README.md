@@ -1,3 +1,2 @@
-# SureHesaplayici
-a timer to set you gaming or coding time
-WORK IN PROGRESS
+# SureHesaplayici (WORK IN PROGRESS)
+A timer to see your gaming or coding time
