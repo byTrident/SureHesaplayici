@@ -20,24 +20,23 @@ def pause_button(bool, box, text, rect, colour = "gray"):
     pygame.draw.rect(screen, colour, box,  2, 100 )
     if box.collidepoint(mouse_pos):
         pygame.draw.rect(screen, colour, pygame.Rect(rect.topleft[0] - (text.get_size()[0] // 4), rect.topleft[1] - (text.get_size()[1] // 4), text.get_size()[0] * 1.5, text.get_size()[1] * 1.5), 0, 100 )
-        screen.blit(text, rect)
+        # screen.blit(text, rect)
         if clicking and bool == False:
             bool = True
         elif clicking and bool == True:
             bool = False
 
     if bool == True:
+        text = text_font.render('Pause', True, TEXT_COLOUR)
+        rect = esad_gaming_pause_text.get_rect()
+        rect.center = (WIDTH // 2, HEIGHT // 10 * 6)
+        box = pygame.Rect(rect.topleft[0] - (text.get_size()[0] // 4), rect.topleft[1] - (text.get_size()[1] // 4), text.get_size()[0] * 1.5, text.get_size()[1] * 1.5)
+    else:
         text = text_font.render('Unpause', True, TEXT_COLOUR)
         rect = esad_gaming_pause_text.get_rect()
         rect.center = (WIDTH // 2, HEIGHT // 10 * 7)
         box = pygame.Rect(rect.topleft[0] - (text.get_size()[0] // 4), rect.topleft[1] - (text.get_size()[1] // 4), text.get_size()[0] * 1.5, text.get_size()[1] * 1.5)
-    else:
-        text = text_font.render('Pause', True, TEXT_COLOUR)
-        rect = esad_gaming_pause_text.get_rect()
-        rect.center = (WIDTH // 2, HEIGHT // 10 * 7)
-        box = pygame.Rect(rect.topleft[0] - (text.get_size()[0] // 4), rect.topleft[1] - (text.get_size()[1] // 4), text.get_size()[0] * 1.5, text.get_size()[1] * 1.5)
     screen.blit(text, rect)
-
 
 screen = pygame.display.set_mode(RES)
 pygame.display.set_caption('Süre Manager')
