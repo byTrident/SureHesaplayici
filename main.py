@@ -27,9 +27,10 @@ def pause_button(bool, box, text, rect, colour = "gray"):
         rect = esad_gaming_pause_text.get_rect()
         rect.center = (WIDTH // 2, HEIGHT // 10 * 7)
         box = pygame.Rect(rect.topleft[0] - (text.get_size()[0] // 4), rect.topleft[1] - (text.get_size()[1] // 4), text.get_size()[0] * 1.5, text.get_size()[1] * 1.5)
+    
     screen.blit(text, rect)
-
     pygame.draw.rect(screen, colour, box,  2, 100 )
+    
     if box.collidepoint(mouse_pos):
         pygame.draw.rect(screen, colour, pygame.Rect(rect.topleft[0] - (text.get_size()[0] // 4), rect.topleft[1] - (text.get_size()[1] // 4), text.get_size()[0] * 1.5, text.get_size()[1] * 1.5), 0, 100 )
         if clicking and bool == False:
