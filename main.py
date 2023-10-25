@@ -17,16 +17,7 @@ def text_button(box, text, rect, colour = 'gray'):
     screen.blit(text, rect)
 
 def pause_button(bool, box, text, rect, colour = "gray"):
-    pygame.draw.rect(screen, colour, box,  2, 100 )
-    if box.collidepoint(mouse_pos):
-        pygame.draw.rect(screen, colour, pygame.Rect(rect.topleft[0] - (text.get_size()[0] // 4), rect.topleft[1] - (text.get_size()[1] // 4), text.get_size()[0] * 1.5, text.get_size()[1] * 1.5), 0, 100 )
-        # screen.blit(text, rect)
-        if clicking and bool == False:
-            bool = True
-        elif clicking and bool == True:
-            bool = False
-
-    if bool == True:
+    if bool == False:
         text = text_font.render('Pause', True, TEXT_COLOUR)
         rect = esad_gaming_pause_text.get_rect()
         rect.center = (WIDTH // 2, HEIGHT // 10 * 6)
@@ -37,6 +28,18 @@ def pause_button(bool, box, text, rect, colour = "gray"):
         rect.center = (WIDTH // 2, HEIGHT // 10 * 7)
         box = pygame.Rect(rect.topleft[0] - (text.get_size()[0] // 4), rect.topleft[1] - (text.get_size()[1] // 4), text.get_size()[0] * 1.5, text.get_size()[1] * 1.5)
     screen.blit(text, rect)
+
+    pygame.draw.rect(screen, colour, box,  2, 100 )
+    if box.collidepoint(mouse_pos):
+        pygame.draw.rect(screen, colour, pygame.Rect(rect.topleft[0] - (text.get_size()[0] // 4), rect.topleft[1] - (text.get_size()[1] // 4), text.get_size()[0] * 1.5, text.get_size()[1] * 1.5), 0, 100 )
+        if clicking and bool == False:
+            return True
+        elif clicking and bool == True:
+            return False
+        elif clicking == False and bool == False:
+            return False
+        elif clicking == False and bool == True:
+            return True
 
 screen = pygame.display.set_mode(RES)
 pygame.display.set_caption('Süre Manager')
@@ -321,12 +324,11 @@ while running:
         # Title
         screen.blit(esad_gaming_text, esad_gaming_text_rect)
 
-
-        pause_button(esad_gaming_paused, esad_gaming_pause_text_box, esad_gaming_pause_text, esad_gaming_pause_text_rect)
-
+        esad_gaming_paused = pause_button(esad_gaming_paused, esad_gaming_pause_text_box, esad_gaming_pause_text, esad_gaming_pause_text_rect)
+        print(esad_gaming_paused) # debug
 
         # Timer
-        if not esad_gaming_paused:
+        if esad_gaming_paused == False:
             second_timer += 1 / clock.get_fps()
             if second_timer >= 1:
                 if esad_gaming_time > 0:
